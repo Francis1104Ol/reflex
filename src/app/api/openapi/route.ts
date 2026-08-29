@@ -51,3 +51,44 @@ const spec = {
           },
         },
       },
+      post: {
+        tags: ["Deliveries"],
+        summary: "Create a delivery request",
+        description:
+          "Creates a new delivery request for a retailer.",
+
+        requestBody: {
+          required: true,
+
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/CreateDelivery",
+              },
+            },
+          },
+        },
+
+        responses: {
+          "201": {
+            description: "Delivery created successfully",
+
+            content: {
+              "application/json": {
+                schema: {
+                  $ref: "#/components/schemas/Delivery",
+                },
+              },
+            },
+          },
+
+          "400": {
+            description: "Invalid request",
+          },
+
+          "401": {
+            description: "Unauthorized",
+          },
+        },
+      },
+    },
