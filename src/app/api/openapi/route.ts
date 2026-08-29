@@ -212,3 +212,60 @@ const spec = {
       },
     },
   },
+  components: {
+    schemas: {
+      Delivery: {
+        type: "object",
+
+        properties: {
+          id: {
+            type: "string",
+            format: "uuid",
+            example: "8b7c3e3a-7b4a-4a5f-9d2b-123456789abc",
+          },
+
+          reference: {
+            type: "string",
+            example: "RX-123456",
+          },
+
+          customer_name: {
+            type: "string",
+            example: "James Kamau",
+          },
+
+          customer_phone: {
+            type: "string",
+            example: "0712345678",
+          },
+
+          address: {
+            type: "string",
+            example: "Westlands, Nairobi",
+          },
+
+          item_description: {
+            type: "string",
+            example: "Samsung Galaxy A55",
+          },
+
+          status: {
+            type: "string",
+            enum: [
+              "PENDING",
+              "ASSIGNED",
+              "PICKED_UP",
+              "IN_TRANSIT",
+              "DELIVERED",
+            ],
+            example: "PENDING",
+          },
+
+          rider_id: {
+            type: "string",
+            format: "uuid",
+            nullable: true,
+            example: "c8f5b3a2-9c44-4c7a-8a12-123456789abc",
+          },
+        },
+      },
