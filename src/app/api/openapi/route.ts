@@ -12,7 +12,7 @@ const spec = {
 
   servers: [
     {
-      url: "http://localhost:3000",
+      url: "https://reflex-dbahe9o4p-the-nation.vercel.app",
       description: "Local development server",
     },
   ],
