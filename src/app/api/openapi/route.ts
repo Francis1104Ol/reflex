@@ -92,3 +92,63 @@ const spec = {
         },
       },
     },
+
+     "/api/deliveries/{id}/assign": {
+      patch: {
+        tags: ["Deliveries"],
+        summary: "Assign a rider",
+        description:
+          "Assigns a registered rider to a delivery and changes its status to ASSIGNED.",
+
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "Delivery database UUID",
+            schema: {
+              type: "string",
+              format: "uuid",
+            },
+          },
+        ],
+
+        requestBody: {
+          required: true,
+
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/AssignRider",
+              },
+            },
+          },
+        },
+
+        responses: {
+          "200": {
+            description: "Rider assigned successfully",
+
+            content: {
+              "application/json": {
+                schema: {
+                  $ref: "#/components/schemas/Delivery",
+                },
+              },
+            },
+          },
+
+          "400": {
+            description: "Invalid rider ID",
+          },
+
+          "401": {
+            description: "Unauthorized",
+          },
+
+          "404": {
+            description: "Delivery or rider not found",
+          },
+        },
+      },
+    },
