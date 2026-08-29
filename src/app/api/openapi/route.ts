@@ -152,3 +152,63 @@ const spec = {
         },
       },
     },
+"/api/deliveries/{id}/status": {
+      patch: {
+        tags: ["Deliveries"],
+        summary: "Update delivery status",
+        description:
+          "Updates the current status of a delivery.",
+
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "Delivery database UUID",
+            schema: {
+              type: "string",
+              format: "uuid",
+            },
+          },
+        ],
+
+        requestBody: {
+          required: true,
+
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/UpdateStatus",
+              },
+            },
+          },
+        },
+
+        responses: {
+          "200": {
+            description: "Status updated successfully",
+
+            content: {
+              "application/json": {
+                schema: {
+                  $ref: "#/components/schemas/Delivery",
+                },
+              },
+            },
+          },
+
+          "400": {
+            description: "Invalid status",
+          },
+
+          "401": {
+            description: "Unauthorized",
+          },
+
+          "404": {
+            description: "Delivery not found",
+          },
+        },
+      },
+    },
+  },
