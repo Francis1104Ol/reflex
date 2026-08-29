@@ -22,3 +22,32 @@ const spec = {
       description: "Create, view, assign, and update deliveries.",
     },
   ],
+   paths: {
+    "/api/deliveries": {
+      get: {
+        tags: ["Deliveries"],
+        summary: "List deliveries",
+        description:
+          "Returns delivery requests available to the authenticated user.",
+
+        responses: {
+          "200": {
+            description: "Deliveries retrieved successfully",
+
+            content: {
+              "application/json": {
+                schema: {
+                  type: "array",
+                  items: {
+                    $ref: "#/components/schemas/Delivery",
+                  },
+                },
+              },
+            },
+          },
+
+          "401": {
+            description: "Unauthorized",
+          },
+        },
+      },
