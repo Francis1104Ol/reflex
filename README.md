@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Reflex — Delivery Operations Platform
 
-## Getting Started
+Reflex is a role-based delivery operations platform designed to help
+small retailers coordinate deliveries without relying entirely on
+WhatsApp and phone calls.
 
-First, run the development server:
+## Problem
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Small retailers often coordinate deliveries manually through WhatsApp
+messages and phone calls. This makes it difficult to know:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Who is handling a delivery
+- What stage the delivery is currently in
+- Which rider was assigned
+- Whether a delivery has actually been completed
+- Where delivery records are stored
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Solution
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Reflex provides a centralized delivery workflow where:
 
-## Learn More
+Retailer
+   ↓
+Creates delivery request
+   ↓
+Dispatcher
+   ↓
+Assigns registered rider
+   ↓
+Rider
+   ↓
+Updates delivery status
+   ↓
+Delivered
 
-To learn more about Next.js, take a look at the following resources:
+## User Roles
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Retailer
+- Create delivery requests
+- View delivery records
+- Track delivery status
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Dispatcher
+- View pending deliveries
+- View registered riders
+- Assign riders to deliveries
+- Monitor delivery operations
 
-## Deploy on Vercel
+### Rider
+- View assigned deliveries
+- Pick up deliveries
+- Start delivery
+- Confirm delivery
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Delivery Status
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+PENDING
+   ↓
+ASSIGNED
+   ↓
+PICKED_UP
+   ↓
+IN_TRANSIT
+   ↓
+DELIVERED
