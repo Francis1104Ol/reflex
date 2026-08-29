@@ -269,3 +269,78 @@ const spec = {
           },
         },
       },
+
+       CreateDelivery: {
+        type: "object",
+
+        required: [
+          "customer_name",
+          "customer_phone",
+          "address",
+          "item_description",
+        ],
+
+        properties: {
+          customer_name: {
+            type: "string",
+            example: "James Kamau",
+          },
+
+          customer_phone: {
+            type: "string",
+            example: "0712345678",
+          },
+
+          address: {
+            type: "string",
+            example: "Westlands, Nairobi",
+          },
+
+          item_description: {
+            type: "string",
+            example: "Samsung Galaxy A55",
+          },
+        },
+      },
+
+      AssignRider: {
+        type: "object",
+
+        required: ["rider_id"],
+
+        properties: {
+          rider_id: {
+            type: "string",
+            format: "uuid",
+            example: "c8f5b3a2-9c44-4c7a-8a12-123456789abc",
+          },
+        },
+      },
+
+      UpdateStatus: {
+        type: "object",
+
+        required: ["status"],
+
+        properties: {
+          status: {
+            type: "string",
+
+            enum: [
+              "PENDING",
+              "ASSIGNED",
+              "PICKED_UP",
+              "IN_TRANSIT",
+              "DELIVERED",
+            ],
+
+            example: "PICKED_UP",
+          },
+        },
+      },
+    },
+  },
+};
+
+export async function GET() {
+  return NextResponse.json(spec)
